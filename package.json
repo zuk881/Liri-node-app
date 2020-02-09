@@ -1,0 +1,24 @@
+{
+  "name": "Liri-node-app",
+  "version": "1.0.0",
+  "description": "LIRI Bot LIRI is like iPhone's SIRI. However, while SIRI is a Speech Interpretation and Recognition Interface, LIRI is a _Language_ Interpretation and Recognition Interface. LIRI will be a command line node app that takes in  parameters and gives you back data. LIRI will search Spotify for songs, Bands in Town for concerts, and OMDB for movies.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zuk881/Liri-node-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zuk881/Liri-node-app/issues"
+  },
+  "homepage": "https://github.com/zuk881/Liri-node-app#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "inquirer": "^7.0.4"
+  }
+}
