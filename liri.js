@@ -1,14 +1,21 @@
-// require("dotenv").config();
 
+
+require('dotenv').config({ debug: process.env.DEBUG });
+
+var moment = require('moment');
+var Spotify = require('node-spotify-api');
 var keys = require("./keys.js");
 var axios = require("axios");
 var input = process.argv;
 var action = input[2];
-var movieName = "";
+var movieName = "The Matrix";
+var spot = "";
+var spotify = new Spotify(keys.spotify);
+var artist = "Carrie Underwood";
 
 switch (action) {
   case "spotify-this-song":
-    spotify();
+    spotifyThis();
     break;
 
   case "movie-this":
@@ -23,24 +30,27 @@ switch (action) {
     doWhat();
     break;
 }
+
+
 function movie() {
-for (var i = 3; i < input.length; i++) {
-  if (i > 3 && i < input.length) {
-    movieName = movieName + " " + input[i];
-  } else {
-    movieName = input[i];
+  for (var i = 3; i < input.length; i++) {
+    if (i > 3 && i < input.length) {
+      movieName = movieName + " " + input[i];
+    } else {
+      movieName = input[i];
+    }
   }
-}
 
-var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&plot=short&apikey=trilogy";
-console.log(movieName)
-axios.get(queryUrl).then(
-  function (x) {
-   disPlayMovie(x.data);
-   
-  });
-}
+  var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&plot=short&apikey=trilogy";
 
+  axios.get(queryUrl).then(
+    function (x) {
+      disPlayMovie(x.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
 
 function disPlayMovie(response) {
   console.log("Movie title is " + response.Title);
@@ -54,6 +64,52 @@ function disPlayMovie(response) {
 }
 
 
+function concert() {
+  for (var i = 3; i < input.length; i++) {
+    if (i > 3 && i < input.length) {
+      artist = artist + " " + input[i];
+    } else {
+      artist = input[i];
+    }
+  }
+
+  var queryUrl_1 = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
+
+  console.log(artist)
+  axios.get(queryUrl_1)
+    .then(function (response) {
+      for (var i = 0; i < response.length; i++) {
+
+      }
+      var randomDate = response.data[i].datetime;
+      var newDate = moment(randomDate).format('MM/DD/YYYY');
+      console.log("The venue name is " + response.data[i].venue.name);
+      console.log("The venue city is " + response.data[i].venue.city);
+      console.log("The venue date is " + newDate);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+
+function spotifyThis() {
+  for (var i = 3; i < input.length; i++) {
+    if (i > 3 && i < input.length) {
+      spot = spot + " " + input[i];
+    } else {
+      spot = input[i];
+    }
+  }
+
+  var queryUrl_1 = "https://api.spotify.com/";
+  axios.get(queryUrl_1)
+    .then(function (x) {
+      console.log(x.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
 
 
 
@@ -69,24 +125,3 @@ function disPlayMovie(response) {
 
 
 
-
-
-
-
-
-
-  // var movieRes = [
-  //   "Movie title is " + response.data.Title,
-  //   "Movie came out in " + response.data.Year,
-  //   "IMBD rating is " + response.data.Rated,
-  //   "The Rotten Tomatoes rating is " + response.data.Ratings[1].Value,
-  //   "Country where movie was produced is " + response.data.Country,
-  //   "Language of movie is " + response.data.Language,
-  //   "Plot of the movie is " + response.data.Plot,
-  //   "Actors in the movie are " + response.data.Actors
-  // ]
-
-  // for (var i = 0; i < movieRes.length; i++) {
-
-
-  // }
