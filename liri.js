@@ -10,13 +10,13 @@ var inquirer = require("inquirer");
 var input = process.argv;
 var spotify = new Spotify(keys.spotify);
 
-// Created a series of questions to get user info and direction
+// Create a series of inquirer questions to get user info and direction
 inquirer.prompt([
-  
+
   {
     type: "input",
     name: "name",
-    message: "Who are you?"
+    message: "What is your name?"
   },
 
   {
@@ -28,7 +28,7 @@ inquirer.prompt([
 
   {
     type: "input",
-    name: "search",
+    name: "choice",
     message: "Search parameters?"
   },
 
@@ -39,17 +39,27 @@ inquirer.prompt([
     default: true
   }
 
+// function that gets inquirer inputs and sets them to variables for use in switch statements to determine next action  
 ]).then(function (user) {
-
+  
+  // falsy value check in case choice is undefined and if it is doingWhat = spotify-this-song  
+  if (user.doingWhat) {
+    user.doingWhat = user.doingWhat;
+    // do something else
+  } else {
+    user.doingWhat = "spotify-this-song";
+  }
+  
   // If the user confirms 
   if (user.confirm) {
-    var action = user.doingWhat
-    var search = user.search
+    var action = user.doingWhat;
+    var search = user.choice;
   }
 
   // If the user doesn't confirm
   else {
 
+  // console.log message if users fails to confirm  
     console.log("==============================================");
     console.log("");
     console.log("Maybe another time " + user.name);
@@ -59,7 +69,7 @@ inquirer.prompt([
   }
 
   // switch function to route which function to run depending on user choice
-    switch (action) {
+  switch (action) {
     case "spotify-this-song":
       spotifyThis();
       break;
@@ -80,7 +90,7 @@ inquirer.prompt([
   // !display movie info function! =============================================================
   function movie() {
 
-  // loop through search results to allow multiple word searches
+    // loop through search results to allow multiple word searches
     for (var i = 3; i < input.length; i++) {
       if (i > 3 && i < input.length) {
         search = search + " " + input[i];
@@ -89,10 +99,18 @@ inquirer.prompt([
       }
     }
 
-  // create variable to hold axios search parameters
+    // falsy value check in case search is undefined and if it is search = default  
+    if (search) {
+      search = search;
+      // do something else
+    } else {
+      search = "Mr Nobody";
+    }
+
+    // create variable to hold axios search parameters
     var queryUrl = "http://www.omdbapi.com/?t=" + search + "&plot=short&apikey=trilogy";
 
-  // axios call to omdb based on user input
+    // axios call to omdb based on user input
     axios.get(queryUrl).then(
       function (x) {
         disPlayMovie(x.data);
@@ -120,7 +138,7 @@ inquirer.prompt([
   // !concert info function! ****************************************************************** 
   function concert() {
 
-  // loop through search results to allow multiple word searches
+    // loop through search results to allow multiple word searches
     for (var i = 3; i < input.length; i++) {
       if (i > 3 && i < input.length) {
         search = search + " " + input[i];
@@ -129,20 +147,28 @@ inquirer.prompt([
       }
     }
 
-  // create variable to hold axios search parameters
+    // falsy value check in case search is undefined and if it is search = default  
+    if (search) {
+      search = search;
+      // do something else
+    } else {
+      search = "Carrie Underwood";
+    }
+
+    // create variable to hold axios search parameters
     var queryUrl_1 = "https://rest.bandsintown.com/artists/" + search + "/events?app_id=codingbootcamp";
-    
-  // axios call to bands-in-town based on user input 
+
+    // axios call to bands-in-town based on user input 
     axios.get(queryUrl_1)
       .then(function (response) {
         for (var i = 0; i < response.length; i++) {
         }
 
-  // convert date from data to new format     
+        // convert date from data to new format     
         var randomDate = response.data[i].datetime;
         var newDate = moment(randomDate).format('MM/DD/YYYY');
-        
-  // console.log artist data      
+
+        // console.log artist data      
         console.log("Here are your results " + user.name);
         console.log("The artist is " + search);
         console.log("The venue name is " + response.data[i].venue.name);
@@ -158,23 +184,32 @@ inquirer.prompt([
 
   // !spotify music info function! +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   function spotifyThis() {
-    
-  // loop through search results to allow multiple word searches
+
+    // loop through search results to allow multiple word searches
     for (var i = 3; i < input.length; i++) {
       if (i > 3 && i < input.length) {
         search = search + " " + input[i];
       } else {
         search = input[i];
       }
+
     }
-   
-  // spotify search based on user input  
+
+    // falsy value check in case search is undefined and if it is search = default  
+    if (search) {
+      search = search;
+      // do something else
+    } else {
+      search = "The Sign";
+    }
+
+    // spotify search based on user input  
     spotify.search({ type: 'track', query: search, limit: 1 }, function (err, data) {
       if (!err) {
         for (var i = 0; i < data.tracks.items.length; i++) {
           var song = data.tracks.items[i];
-  
-  // console.log song info       
+
+          // console.log song info       
           console.log("Here are your results " + user.name);
           console.log("Artist: " + song.artists[0].name);
           console.log("Song: " + song.name);
@@ -200,17 +235,16 @@ inquirer.prompt([
 
       // Break the string down by comma separation and store the contents into the output array.
       var output = data.split(",");
-        
-     // Loop Through the newly created output array
+
+      // Loop Through the newly created output array
       for (var i = 0; i < output.length; i++) {
-   
+
       }
 
-     // grab the second item in the array and set it to search 
-        search = output[1];
-        spotifyThis();
-     
-    
+      // grab the second item in the array and set it to search and call function 
+      search = output[1];
+      spotifyThis();
+
     });
   }
   //############################################################################################################
