@@ -39,18 +39,18 @@ inquirer.prompt([
     default: true
   }
 
-// function that gets inquirer inputs and sets them to variables for use in switch statements to determine next action  
+  // function that gets inquirer inputs and sets them to variables for use in switch statements to determine next action  
 ]).then(function (user) {
-  
-  // falsy value check in case choice is undefined and if it is doingWhat = spotify-this-song  
+
+  // falsy value check in case choice is undefined and if it is default = spotify-this-song  
   if (user.doingWhat) {
     user.doingWhat = user.doingWhat;
     // do something else
   } else {
     user.doingWhat = "spotify-this-song";
   }
-  
-  // If the user confirms 
+
+  // If the user confirms, store values in variables 
   if (user.confirm) {
     var action = user.doingWhat;
     var search = user.choice;
@@ -59,7 +59,7 @@ inquirer.prompt([
   // If the user doesn't confirm
   else {
 
-  // console.log message if users fails to confirm  
+    // console.log message if users fails to confirm  
     console.log("==============================================");
     console.log("");
     console.log("Maybe another time " + user.name);
@@ -211,11 +211,10 @@ inquirer.prompt([
 
           // console.log song info       
           console.log("Here are your results " + user.name);
-          console.log("Artist: " + song.artists[0].name);
-          console.log("Song: " + song.name);
-          console.log("Preview link: " + song.preview_url);
-          console.log("Album: " + song.album.name);
-          console.log("-----------------------");
+          console.log("Artist is " + song.artists[0].name);
+          console.log("Song is " + song.name);
+          console.log("Preview link is " + song.preview_url);
+          console.log("Album is " + song.album.name);
         }
       } else {
         console.log('Error occurred.');
@@ -238,18 +237,31 @@ inquirer.prompt([
 
       // Loop Through the newly created output array
       for (var i = 0; i < output.length; i++) {
-
+      var output1 = output[0];
+      var output2 = output[1]
       }
 
-      // grab the second item in the array and set it to search and call function 
-      search = output[1];
+      // check 1st item in the array and set search equal to 2nd item in the array, then call appropriate function
+      if (output1 === "spotify-this-song") {
+      search = output2;
       spotifyThis();
-
+      } else if (output1 === "movie-this") {
+      search = output2;
+      movie();     
+      } else if (output1 === "concert-this") {
+      search = output2;
+      concert();
+      } else {
+        search = output2;
+      }
     });
   }
   //############################################################################################################
 
 });
+
+
+
 
 
 
