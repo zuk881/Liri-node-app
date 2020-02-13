@@ -6,8 +6,8 @@ LIRI will search Spotify for songs, Bands in Town for concerts, and OMDB for mov
 
 ##Overview 
 
-This app is a command line interface program that uses Node.js with various NPM isntalled to ask the users a few questions,
-and based on answers queries three different API's and console.logs the results. 
+This app is a command line interface program that uses Node.js with various NPM installed to ask the users a few questions,
+and based on answers queries three different API's. Then console.logs the results. 
 The API's used are,
 
 * Spotify
@@ -16,7 +16,8 @@ The API's used are,
 
 Some of the technology involed to make app are JavaScript, Node.js, and Node packages from Spotify, Axios, Moment, DotENv, fs-node,
 and inquirer.
-*Overall this was a challenging project, from figuring out how to get the authorization keys from Spotify to work correctly, to bringing all the different functions together to get the application working smoothly. That being said this was also  a fun assignment. Seeing it all come together and work properly was very rewarding.
+
+*Overall this was a challenging project, from figuring out how to get the authorization keys from Spotify to work correctly, to bringing all the different functions together to get the application working smoothly. That being said this was also a fun assignment. Seeing it all come together and work properly was very rewarding.
 
 ## Instructions
 
