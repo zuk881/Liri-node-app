@@ -4,7 +4,7 @@ LIRI is a _Language_ Interpretation and Recognition Interface. LIRI will be a co
 parameters and gives you back data.
 LIRI will search Spotify for songs, Bands in Town for concerts, and OMDB for movies.
 
-##Overview 
+## Overview 
 
 This app is a command line interface program that uses Node.js with various NPM installed to ask the users a few questions,
 and based on answers queries three different API's. Then console.logs the results. 
@@ -43,7 +43,7 @@ If no search parameters are chosen it will search based on default search parame
 For do-what-it-says, it is running instructions in the random.txt file. *example* spotify-this-song, "Thunderstruck"
 You can edit the first argument, to change what it does, or the second argument to change search parameters.
 
-#Note
+### Note
 
 To be able to run this App you will need to provide your own .env file with Spotify ID and Secret.
  
