@@ -45,7 +45,9 @@ You can edit the first argument, to change what it does, or the second argument 
 #Note
 
 To be able to run this App you will need to provide your own .env file with Spotify ID and Secret.
-# Spotify API keys
+ 
+ Spotify API keys
 
 SPOTIFY_ID=<your Spotify_ID>
+
 SPOTIFY_SECRET=<your Spotify_secret>
