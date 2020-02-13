@@ -48,6 +48,6 @@ To be able to run this App you will need to provide your own .env file with Spot
  
  Spotify API keys
 
-SPOTIFY_ID=<your Spotify_ID>
+SPOTIFY_ID="your Spotify_ID"
 
-SPOTIFY_SECRET=<your Spotify_secret>
+SPOTIFY_SECRET="your Spotify_secret"
