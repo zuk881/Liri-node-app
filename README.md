@@ -14,7 +14,7 @@ The API's used are,
 * Bands in Town
 * OMDB
 
-Some of the technology involed to make app are JavaScript, Node.js, and Node packages from Spotify, Axios, Moment, DotENv, fs-node,
+Some of the technology involed to make app are JavaScript, Node.js, and Node packages from Spotify, Axios, Moment, DotEnv, fs-node,
 and inquirer.
 
 *Overall this was a challenging project, from figuring out how to get the authorization keys from Spotify to work correctly, to bringing all the different functions together to get the application working smoothly. That being said this was also a fun assignment. Seeing it all come together and work properly was very rewarding.
