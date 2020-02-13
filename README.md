@@ -5,6 +5,7 @@ parameters and gives you back data.
 LIRI will search Spotify for songs, Bands in Town for concerts, and OMDB for movies.
 
 ##Overview 
+
 This app is a command line interface program that uses Node.js with various NPM isntalled to ask the users a few questions,
 and based on answers queries three different API's and console.logs the results. 
 The API's used are,
@@ -18,6 +19,7 @@ and inquirer.
 *Overall this was a challenging project, from figuring out how to get the authorization keys from Spotify to work correctly, to bringing all the different functions together to get the application working smoothly. That being said this was also  a fun assignment. Seeing it all come together and work properly was very rewarding.
 
 ## Instructions
+
 The app will start out by asking for your name. 
 It will then present you with a list of choices of what it can do.
 
@@ -41,6 +43,7 @@ For do-what-it-says, it is running instructions in the random.txt file. *example
 You can edit the first argument, to change what it does, or the second argument to change search parameters.
 
 #Note
+
 To be able to run this App you will need to provide your own .env file with Spotify ID and Secret.
 # Spotify API keys
 
