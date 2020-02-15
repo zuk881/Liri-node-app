@@ -112,26 +112,33 @@ inquirer.prompt([
 
     // axios call to omdb based on user input
     axios.get(queryUrl).then(
-      function (x) {
-        disPlayMovie(x.data);
+      function (response) {
+
+        //  falsy value check to see if response comes back undefined, and if it does console log sorry message
+        if (response.data.Title) {
+          response.data.Title = response.data.Title;
+          // do something else
+        } else {
+          return console.log("Sorry " + user.name + "," + " we could not find any results");
+        }
+
+        // console.log movie search results  
+        console.log("Here are your results " + user.name);
+        console.log("Movie title is " + response.data.Title);
+        console.log("Movie came out in " + response.data.Year);
+        console.log("IMBD rating is " + response.data.Rated);
+        console.log("The Rotten Tomatoes rating is " + response.data.Ratings[1].Value);
+        console.log("Country where movie was produced is " + response.data.Country);
+        console.log("Language of movie is " + response.data.Language);
+        console.log("Plot of the movie is " + response.data.Plot);
+        console.log("Actors in the movie are " + response.data.Actors);
+
       })
       .catch(function (error) {
         console.log(error);
       });
   }
 
-  // function to display movie data
-  function disPlayMovie(response) {
-    console.log("Here are your results " + user.name);
-    console.log("Movie title is " + response.Title);
-    console.log("Movie came out in " + response.Year);
-    console.log("IMBD rating is " + response.Rated);
-    console.log("The Rotten Tomatoes rating is " + response.Ratings[1].Value);
-    console.log("Country where movie was produced is " + response.Country);
-    console.log("Language of movie is " + response.Language);
-    console.log("Plot of the movie is " + response.Plot);
-    console.log("Actors in the movie are " + response.Actors);
-  }
   //=================================================================================================
 
 
@@ -162,6 +169,14 @@ inquirer.prompt([
     axios.get(queryUrl_1)
       .then(function (response) {
         for (var i = 0; i < response.length; i++) {
+        }
+
+        //  falsy value check to see if response comes back undefined, and if it does console log sorry message
+        if (response.data[i]) {
+          response.data[i] = response.data[i];
+          // do something else
+        } else {
+          return console.log("Sorry " + user.name + "," + " we could not find any results");
         }
 
         // convert date from data to new format     
@@ -237,20 +252,21 @@ inquirer.prompt([
 
       // Loop Through the newly created output array
       for (var i = 0; i < output.length; i++) {
-      var output1 = output[0];
-      var output2 = output[1]
+        // set variables to the 2 items in the array  
+        var output1 = output[0];
+        var output2 = output[1]
       }
 
       // check 1st item in the array and set search equal to 2nd item in the array, then call appropriate function
       if (output1 === "spotify-this-song") {
-      search = output2;
-      spotifyThis();
+        search = output2;
+        spotifyThis();
       } else if (output1 === "movie-this") {
-      search = output2;
-      movie();     
+        search = output2;
+        movie();
       } else if (output1 === "concert-this") {
-      search = output2;
-      concert();
+        search = output2;
+        concert();
       } else {
         search = output2;
       }
