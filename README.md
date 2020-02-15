@@ -51,3 +51,7 @@ To be able to run this App you will need to provide your own .env file with Spot
 SPOTIFY_ID=<your Spotify_ID>
 
 SPOTIFY_SECRET=<your Spotify_secret>
+
+This is a link to video demonstrating usage!
+https://drive.google.com/file/d/1YHuMnPNlhwz3MZKJcG4Nny5R_8IBumNn/view
+ 
