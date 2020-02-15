@@ -113,7 +113,7 @@ inquirer.prompt([
     // axios call to omdb based on user input
     axios.get(queryUrl).then(
       function (response) {
-
+      
         //  falsy value check to see if response comes back undefined, and if it does console log sorry message
         if (response.data.Title) {
           response.data.Title = response.data.Title;
@@ -121,8 +121,8 @@ inquirer.prompt([
         } else {
           return console.log("Sorry " + user.name + "," + " we could not find any results");
         }
-
-        // console.log movie search results  
+      
+      // console.log movie info
         console.log("Here are your results " + user.name);
         console.log("Movie title is " + response.data.Title);
         console.log("Movie came out in " + response.data.Year);
@@ -207,7 +207,6 @@ inquirer.prompt([
       } else {
         search = input[i];
       }
-
     }
 
     // falsy value check in case search is undefined and if it is search = default  
@@ -252,7 +251,7 @@ inquirer.prompt([
 
       // Loop Through the newly created output array
       for (var i = 0; i < output.length; i++) {
-        // set variables to the 2 items in the array  
+        // set variables equal to the indexes in the array
         var output1 = output[0];
         var output2 = output[1]
       }
