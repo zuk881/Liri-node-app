@@ -22,7 +22,7 @@
     "dotenv": "^8.2.0",
     "fs-node": "^1.0.1",
     "inquirer": "^7.0.4",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "node-spotify-api": "^1.1.1"
   }
 }
