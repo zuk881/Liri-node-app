@@ -6,7 +6,7 @@ LIRI will search Spotify for songs, Bands in Town for concerts, and OMDB for mov
 
 ## Overview 
 
-This app is a command line interface program that uses Node.js with various NPM isntalled to ask the users a few questions,
+This app is a command line interface program that uses Node.js with various NPM installed to ask the users a few questions,
 and based on answers queries three different API's and console.logs the results. 
 The API's used are,
 
